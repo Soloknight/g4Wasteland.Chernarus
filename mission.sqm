@@ -138,7 +138,7 @@ class Mission
 	randomSeed=14957468;
 	class Intel
 	{
-		briefingName="A3Wasteland Chernarus v1.1 extDB";
+		briefingName="G4Wasteland Chernarus extDB";
 		overviewText="G4G Wasteland Chernarus by g4-gamers.com - Core developed by A3Wasteland.com";
 		resistanceWest=0;
 		timeOfChanges=3600;
