@@ -7,7 +7,7 @@ if (!hasInterface) exitWith {};
 
 waitUntil {!isNull player};
 
-player createDiarySubject ["features", "G4 Server Features"];
+player createDiarySubject ["features", "Server Features"];
 player createDiarySubject ["officers", "Server Admins"];
 player createDiarySubject ["addons", "Server Keys"];
 player createDiarySubject ["infos", "Infos and Help"];
