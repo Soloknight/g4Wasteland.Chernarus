@@ -77,7 +77,6 @@ if (["A3W_playerSaving"] call isConfigOn) then
 {
 	call compile preprocessFileLineNumbers "persistence\client\players\setupPlayerDB.sqf";
 	call fn_requestPlayerData;
-	9999 cutText ["Received Player Info", "BLACK", 0.01];
 
 	waitUntil {!isNil "playerData_loaded"};
 
@@ -92,6 +91,19 @@ if (["A3W_playerSaving"] call isConfigOn) then
 			call fn_savePlayerData;
 		};
 	});
+};
+
+// Territory saving - load data
+if (["A3W_territorySaving"] call isConfigOn) then
+{
+	diag_log text "[INFO] init: A3W_territorySaving is set ... requesting territory state data from server";
+	call compile preprocessFileLineNumbers "territory\client\setupTerritories.sqf";
+	call fn_requestTerritoryData;
+
+	waitUntil {!isNil "territoryData_loaded"};  //block here until we get the territory data
+	diag_log text "[INFO]  init: territoryData_loaded";
+} else {
+	diag_log text "[INFO]  init: A3W_territorySaving is not set, so not setting up territory data";
 };
 
 if (isNil "playerData_alive") then

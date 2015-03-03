@@ -175,7 +175,7 @@ T8_fnc_ActionLaptop =
 			systemChat format["You have hacked players bank accounts to the value of $25,000"];				
 				};
 			};
-					
+			
 			ctrlSetText [ 8002, format [ "%1 kb/s", _dlRate ] ];		
 			ctrlSetText [ 8004, format [ "%1 kb", _newFile ] ];				
 			

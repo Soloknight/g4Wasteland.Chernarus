@@ -5,9 +5,17 @@
 //	@file Name: leaveGroup.sqf
 //	@file Author: [404] Deadbeat
 //	@file Created: 20/11/2012 05:19
+//  @file Modified: Munch 2015-02-20 revise to handle server-side group ownerships of territories
 
-_group = group player;
-[_group getVariable ["currentTerritories", []], false, _group, false] call updateTerritoryMarkers;
+private ["_oldGroup", "_playerUID"];
+
+_oldGroup = group player;
+_playerUID = getPlayerUID player;
 [player] join grpNull;
 player setVariable ["currentGroupRestore", grpNull, true];
 player setVariable ["currentGroupIsLeader", false, true];
+
+// have the server remove the player from territory ownerships
+pvar_processGroupInvite = ["leave", _playerUID, _oldGroup];
+publicVariableServer "pvar_processGroupInvite";
+

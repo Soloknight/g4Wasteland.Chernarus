@@ -42,23 +42,23 @@ waitUntil {alive player};
 sleep 15; //Wait in seconds before the credits start after player IS ingame
 
 _role1 = "Welcome back to";
-_role1names = ["the G4 wasteland chernarus server 1 / A3W v1.1c"];
+_role1names = ["the G4 wasteland Chernarus server 1 / v1.5"];
 _role2 = "Thanks to all the players";
 _role2names = ["For making this a awesome server!"];
 _role3 = "Our G4 TS3 server info is:";
 _role3names = ["ts.g4-gamers.com"];
 _role4 = "Check out the server stats at";
 _role4names = ["www.g4-gamers.com"];
-_role5 = "Need help?  Goto your map,";
-_role5names = ["click on Server Features"];
+_role5 = "Need help?  Goto the map M key,";
+_role5names = ["there you can click on Server Features"];
 _role6 = "or";
-_role6names = ["G4 Admin info"];
-_role7 = "Always check:";
+_role6names = ["See who are the G4 Admin's"];
+_role7 = "Always checkout the";
 _role7names = ["Server change log for server changes/updates!"];
-_role8 = "Did you know we have server loadouts?";
-_role8names = ["Check our website for server loadout details"];
-_role9 = "Goto pimp your shit/Server perks at g4-gamers.com,";
-_role9names = ["Don't forget we also have a Stratis 1 & 2 servers linked to this server!!"];
+_role8 = "Did you know we have player loadouts?";
+_role8names = ["Check our website for player loadout 4 details"];
+_role9 = "Go to pimp your shit/Server perks at g4-gamers.com,";
+_role9names = ["Don't forget we also have a Stratis and an Altis server link to the Banks!"];
 _role10 = "Again,";
 _role10names = ["THANK YOU and HAVE FUN!!!"];
 

@@ -108,9 +108,8 @@ while {true} do
 	_hudVehicle = _ui displayCtrl hud_vehicle_idc;
 	_hudActivityIcon = _ui displayCtrl hud_activity_icon_idc;
 	_hudActivityTextbox = _ui displayCtrl hud_activity_textbox_idc;
-	//_hudServerTextbox = _ui displayCtrl hud_server_idc;
 	
-	//_serverString = format ["<t color='#A0FFFFFF'>Server: |g4| Wasteland chernarus</t>", call A3W_extDB_ServerID];
+	//_serverString = format ["<t color='#A0FFFFFF'>Server: |g4| Wasteland Chernarus</t>", call A3W_extDB_ServerID];
 	//_serverString = format ["%1<br/><t color='#A0FFFFFF'>Teamspeak: ts.g4-gamers.com<br/>Website: G4-GAMERS.COM</t>",_serverString];
 	//_hudServerTextbox ctrlSetStructuredText parseText _serverString;
 	//_hudServerTextbox ctrlCommit 0;
