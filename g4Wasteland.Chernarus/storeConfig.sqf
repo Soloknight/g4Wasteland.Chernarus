@@ -1458,6 +1458,7 @@ helicoptersArray = compileFinal str
 [
 
 //AFRF
+
 	["Ka52 Grey", "RHS_Ka52_vvs", 60000, "vehicle"],
 	["Ka52 Camo", "RHS_Ka52_vvsc", 60000, "vehicle"],
 	["Ka-60 Grey", "rhs_ka60_grey", 10000, "vehicle"],
@@ -1493,6 +1494,8 @@ helicoptersArray = compileFinal str
 
 //USAF
 	//110k
+	["MH-9 Hummingbird", "B_Heli_Light_01_F", 5000, "vehicle"], // MH-6
+	["AH-9 Pawnee", "B_Heli_Light_01_armed_F", 30000, "vehicle"], // Armed AH-6
 	["AH-64D Apache Wood", "rhs_ah64d_wd", 80000, "vehicle"],
 	["AH-64D Apache Desert", "rhs_ah64d", 80000, "vehicle"],
 
