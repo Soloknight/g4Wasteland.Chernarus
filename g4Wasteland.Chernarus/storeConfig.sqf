@@ -283,6 +283,8 @@ launcherArray = compileFinal str
 allGunStoreFirearms = compileFinal str (call pistolArray + call smgArray + call rifleArray + call lmgArray + call launcherArray);
 
 
+// Note: store availability to player switches which static weap is avail depending on player side,
+// so 3 entries of each weapon type (one for each side) are needed here
 staticGunsArray = compileFinal str
 [
 		// ["Vehicle Ammo Crate", "Box_NATO_AmmoVeh_F", 2500],
@@ -292,27 +294,27 @@ staticGunsArray = compileFinal str
 	//["Static Titan AA 4Rnd (NATO)", "B_static_AA_F", 3000],
 		//["Static Titan AA 4Rnd (CSAT)", "O_static_AA_F", 3000],
 		//["Static Titan AA 4Rnd (AAF)", "I_static_AA_F", 3000],
-	["Mk30 HMG .50 Low tripod (NATO)", "B_HMG_01_F", 2000],
-		//["Mk30 HMG .50 Low tripod (CSAT)", "O_HMG_01_F", 2000],
-		//["Mk30 HMG .50 Low tripod (AAF)", "I_HMG_01_F", 2000],
+	["Mk30 HMG .50 Low tripod (NATO)", "B_HMG_01_F", 5500],
+	["Mk30 HMG .50 Low tripod (CSAT)", "O_HMG_01_F", 5500],
+	["Mk30 HMG .50 Low tripod (AAF)", "I_HMG_01_F", 5500],
 		// ["Mk30A HMG .50 Sentry (NATO)", "B_HMG_01_A_F", 5000], // "A" = Autonomous = Overpowered
 		// ["Mk30A HMG .50 Sentry (CSAT)", "O_HMG_01_A_F", 5000],
 		// ["Mk30A HMG .50 Sentry (AAF)", "I_HMG_01_A_F", 5000],
-	["Mk30 HMG .50 High tripod (NATO)", "B_HMG_01_high_F", 3000],
-		//["Mk30 HMG .50 High tripod (CSAT)", "O_HMG_01_high_F", 3000],
-		//["Mk30 HMG .50 High tripod (AAF)", "I_HMG_01_high_F", 3000],
-	["Mk32 GMG 20mm Low tripod (NATO)", "B_GMG_01_F", 5000],
-		//["Mk32 GMG 20mm Low tripod (CSAT)", "O_GMG_01_F", 5000],
-		//["Mk32 GMG 20mm Low tripod (AAF)", "I_GMG_01_F", 5000],
+	["Mk30 HMG .50 High tripod (NATO)", "B_HMG_01_high_F", 6000],
+	["Mk30 HMG .50 High tripod (CSAT)", "O_HMG_01_high_F", 6000],
+	["Mk30 HMG .50 High tripod (AAF)", "I_HMG_01_high_F", 6000],
+	["Mk32 GMG 20mm Low tripod (NATO)", "B_GMG_01_F", 7500],
+	["Mk32 GMG 20mm Low tripod (CSAT)", "O_GMG_01_F", 7500],
+	["Mk32 GMG 20mm Low tripod (AAF)", "I_GMG_01_F", 7500],
 		// ["Mk32A GMG 20mm Sentry (NATO)", "B_GMG_01_A_F", 10000],
 		// ["Mk32A GMG 20mm Sentry (CSAT)", "O_GMG_01_A_F", 10000],
 		// ["Mk32A GMG 20mm Sentry (AAF)", "I_GMG_01_A_F", 10000],
-	["Mk32 GMG 20mm High tripod (NATO)", "B_GMG_01_high_F", 6000],
-		//["Mk32 GMG 20mm High tripod (CSAT)", "O_GMG_01_high_F", 6000],
-		//["Mk32 GMG 20mm High tripod (AAF)", "I_GMG_01_high_F", 6000],
-	["Mk6 Mortar (NATO)", "B_Mortar_01_F", 12500]
-		//["Mk6 Mortar (CSAT)", "O_Mortar_01_F", 12500],
-		//["Mk6 Mortar (AAF)", "I_Mortar_01_F", 12500]
+	["Mk32 GMG 20mm High tripod (NATO)", "B_GMG_01_high_F", 12000],
+	["Mk32 GMG 20mm High tripod (CSAT)", "O_GMG_01_high_F", 12000],
+	["Mk32 GMG 20mm High tripod (AAF)", "I_GMG_01_high_F", 12000],
+	["Mk6 Mortar (NATO)", "B_Mortar_01_F", 42500],
+	["Mk6 Mortar (CSAT)", "O_Mortar_01_F", 42500],
+	["Mk6 Mortar (AAF)", "I_Mortar_01_F", 42500]
 ];
 
 throwputArray = compileFinal str
