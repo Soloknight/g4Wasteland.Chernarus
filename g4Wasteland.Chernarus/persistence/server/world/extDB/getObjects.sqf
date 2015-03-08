@@ -12,7 +12,7 @@ _saveUnlockedObjects = ["A3W_extDB_SaveUnlockedObjects", 0] call getPublicVar;  
 
 if ((_maxLifetime > 0 || _maxUnusedtime > 0) && _saveUnlockedObjects >= 0) then
 {
-	[format ["deleteExpiredServerObjects:%1:%2:%3:%4", call A3W_extDB_ServerID, call A3W_extDB_MapID, _maxLifetime, _maxUnusedtime], 2] call extDB_Database_async;
+	[format ["deleteExpiredServerObjects:%1:%2:%3:%4", call A3W_extDB_ServerID, call A3W_extDB_MapID, , _maxUnusedtime, _maxLifetime], 2] call extDB_Database_async;
 };
 
 // DB column name, oLoad variable name
