@@ -107,7 +107,27 @@ player createDiaryRecord ["features",
 <br/> use our forum on our website or contact form
 "
 ]];
+player createDiaryRecord ["changelog",
+[
+"g4-gamers v1.5.1",
+"
+<br/>[Changed] Spawn beacon limit of 3 per player introduced
+<br/>[Changed] Removed OP DAGR missiles from Blackfoot, replaced with DAR rockets instead
+<br/>[Fixed] Selection criteria for object deletion set to include objects unused for 7 days
+<br/>[Fixed] Sounds for Device Detector and Boomerang
+"
+]];
 
+player createDiaryRecord ["changelog",
+[
+"g4-gamers v1.5",
+"
+<br/>[Added] Territory capture status persistence through server restarts
+<br/>[Added] In-vehicle object persistence through server restarts
+<br/>[Added] Support for donator loadouts
+<br/>[Fixed] Issue with previous territory captures not applying on Independent player re-joins
+"
+]];
 player createDiaryRecord ["changelog",
 [
 "v1.1",
