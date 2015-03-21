@@ -76,7 +76,7 @@ if (count _territories < count (["config_territory_markers", []] call getPublicV
 	{
 		_markerName = format ["""%1""", _x select 0];
 		// Does this marker exist ?
-		_result2 = ([format ["checkServerTerritory:%1:%2:%3", call A3W_extDB_ServerID, call A3W_extDB_MapID, _markerName], 2] call extDB_Database_async) select 0;
+		_result2 = ([format ["checkServerTerritory:%1:%2:%3", call A3W_extDB_ServerID, call A3W_extDB_MapID, _markerName], 2, true] call extDB_Database_async) select 0;
 		if (!_result2) then {
 			// need to create data for this marker
 			_markerID = ([format ["newTerritoryCaptureStatus:%1:%2", call A3W_extDB_ServerID, call A3W_extDB_MapID], 2, false] call extDB_Database_async) select 0;
@@ -91,7 +91,7 @@ if (count _territories < count (["config_territory_markers", []] call getPublicV
 				["TimeHeld", _currentTerritoryChrono]
 			];
 			_updateValues = [_props, 0] call extDB_pairsToSQL;
-			[format ["updateTerritoryCaptureStatus:%1:", _markerID] + _updateValues] call extDB_Database_async;
+			[format [["updateTerritoryCaptureStatus:%1:", _markerID] + _updateValues], 2, true] call extDB_Database_async;
 			_territories pushBack [_markerID,_markerName,_currentTerritoryOccupiers,[], sideUnknown,0,0,objNull,[]];
 		};
 	} forEach (["config_territory_markers", []] call getPublicVar);
