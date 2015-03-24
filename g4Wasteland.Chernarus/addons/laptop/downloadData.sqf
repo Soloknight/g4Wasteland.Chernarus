@@ -171,8 +171,8 @@ T8_fnc_ActionLaptop =
 			systemChat format["You have hacked players bank accounts to the value of $%1",_totalMoney];	
 			}
 		else 	{
-			player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + 25000, true];
-			systemChat format["You have hacked players bank accounts to the value of $25,000"];				
+				player setVariable ["cmoney", (player getVariable ["cmoney", 0]) + 25000, true];
+				systemChat format["You have hacked players bank accounts to the value of $25,000"];				
 				};
 			};
 			
