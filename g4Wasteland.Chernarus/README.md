@@ -14,3 +14,10 @@ Notes about our fork:
 	Soloknight
 	Munch
 	
+A3W Original Collaborators:
+       GoT - JoSchaap
+       TPG - AgentRev
+           - MercyfulFate
+       KoS - His_Shadow
+       KoS - Bewilderbeest
+       404 - Del1te
