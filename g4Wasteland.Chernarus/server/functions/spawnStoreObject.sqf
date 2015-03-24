@@ -128,9 +128,8 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 
 			_objectID = netId _object;
 			_object setVariable ["A3W_purchasedStoreObject", true];
-			_object setVariable ["ownerUID", getPlayerUID _player, true]; //Cael817, SNAFU, Added true for possible future locking of boxes.
-			_object setVariable ["ownerName", name _player, true];	//Cael817, SNAFU, Set ownerName to all spawned store objects for convenience.
-			[_object] call v_trackVehicle;
+			_object setVariable ["ownerUID", getPlayerUID _player, true];
+			_object setVariable ["R3F_LOG_Disabled", false, true];
 
 			if (getNumber (configFile >> "CfgVehicles" >> _class >> "isUav") > 0) then
 			{
@@ -160,12 +159,11 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 			};
 
 			// Spawn remaining calls to speed up delivery confirmation
-			[_object, _safePos, _marker, _player] spawn //Cael817, SNAFU, Added _player so the setting of variables below work.
+			[_object, _safePos, _marker] spawn
 			{
 				_object = _this select 0;
 				_safePos = _this select 1;
 				_marker = _this select 2;
-				_player = _this select 3;
 
 				_isDamageable = !(_object isKindOf "ReammoBox_F"); // ({_object isKindOf _x} count ["AllVehicles", "Lamps_base_F", "Cargo_Patrol_base_F", "Cargo_Tower_base_F"] > 0);
 
@@ -175,15 +173,15 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 
 				if (_object isKindOf "AllVehicles" && !(_object isKindOf "StaticWeapon")) then
 				{
-					_object setPosATL [_safePos select 0, _safePos select 1, 0.05];
-					_object setVelocity [0,0,0.01];
+					_object setPosATL [_safePos select 0, _safePos select 1, 0.5];
+					//_object setVelocity [0,0,0.01];
+					_object setVelocity [0,0,0.001]; // Changed vertical velocity to slower.
+					_object engineOn true; // Lets already turn the engine one to see if it fixes exploding vehicles.
 					// _object spawn cleanVehicleWreck;
-					_object setVariable ["A3W_purchasedVehicle", true, true]; // change back if not locking
-					_object lock 2;
-					//[[netId _object, 2], "A3W_fnc_setLockState", _object]; call A3W_fnc_MP; //Cael817, SNAFU, Spawn vehicle locked
-					_object setVariable ["R3F_LOG_disabled",true,true]; //Cael817, SNAFU, Spawn vehicle untowable/liftable		
+					_object setVariable ["A3W_purchasedVehicle", true, true];
+					_object lock 2; // Spawn vehicles in locked
+					_object setVariable ["R3F_LOG_disabled",true,true]; // Spawn vehicles in locked
 				};
-
 				if (_object isKindOf "Plane") then
 				{
 					_object setDir markerDir _marker;
@@ -198,6 +196,12 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 					case ({_object isKindOf _x} count ["Box_NATO_AmmoVeh_F", "Box_East_AmmoVeh_F", "Box_IND_AmmoVeh_F"] > 0):
 					{
 						_object setAmmoCargo 5;
+					};
+					
+					//Disable damage on store crate
+					case ({_object isKindOf _x} count ["Box_NATO_Ammo_F"] > 0):
+					{
+						_object allowDamage false;
 					};
 
 					// Add food to bought food sacks.
