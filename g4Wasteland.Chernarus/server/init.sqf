@@ -48,7 +48,7 @@ addMissionEventHandler ["HandleDisconnect",
 //Execute Server Side Scripts.
 call compile preprocessFileLineNumbers "server\antihack\setup.sqf";
 [] execVM "server\admins.sqf";
-[] execVM "server\functions\serverVars.sqf";
+[] execVM "server\serverVars.sqf";
 _serverCompileHandle = [] spawn compile preprocessFileLineNumbers "server\functions\serverCompile.sqf"; // scriptDone stays stuck on false when using execVM on Linux
 [] execVM "server\functions\broadcaster.sqf";
 [] execVM "server\functions\relations.sqf";
@@ -104,10 +104,6 @@ forEach
 	"A3W_purchasedVehicleSaving",
 	"A3W_missionVehicleSaving",
 	"A3W_missionFarAiDrawLines",
-	"A3W_vehicleThermals",
-	"A3W_firstPersonCamOnFoot",
-	"A3W_firstPersonCamNotDriver",
-	"A3W_resupplyCostPR",
 	"A3W_atmEnabled",
 	"A3W_atmMaxBalance",
 	"A3W_atmTransferFee",
@@ -115,9 +111,17 @@ forEach
 	"A3W_atmEditorPlacedOnly",
 	"A3W_atmMapIcons",
 	"A3W_atmRemoveIfDisabled",
+	"A3W_extDB_PlayerSave_ServerID",
+	"A3W_extension",
+	"A3W_vehicleThermals",
+	"A3W_firstPersonCamOnFoot",
+	"A3W_firstPersonCamNotDriver",
+	"A3W_resupplyCostPR",
+	"A3W_territoryAllowed",
 	"A3W_tkAutoKickEnabled",
 	"A3W_tkKickAmount",
-	"A3W_donatorEnabled"
+	"A3W_donatorEnabled",
+	"A3W_customUniformEnabled"
 ];
 
 ["A3W_join", "onPlayerConnected", { [_id, _uid, _name] spawn fn_onPlayerConnected }] call BIS_fnc_addStackedEventHandler;

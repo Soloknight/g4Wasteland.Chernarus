@@ -7,7 +7,7 @@
 if (!isServer) exitwith {};
 #include "mainMissionDefines.sqf"
 
-private ["_heliChoices", "_convoyVeh", "_veh1", "_veh2", "_veh3", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_vehicleName2", "_numWaypoints", "_box1", "_box2", "_box3"];
+private ["_heliChoices", "_convoyVeh", "_veh1", "_veh2", "_veh3", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_vehicleName2", "_numWaypoints", "_box1", "_box2", "_box3", "_loadout"];
 
 _setupVars =
 {
@@ -18,12 +18,26 @@ _setupVars =
 _setupObjects =
 {
 	_missionPos = markerPos (((call cityList) call BIS_fnc_selectRandom) select 0);
+	_loadout = aiLoadoutsCrewman call BIS_fnc_selectRandom;
 
 	_heliChoices =
 	[
-		["B_Heli_Transport_01_F", "B_Heli_Light_01_armed_F"],
-		["B_Heli_Transport_01_camo_F", "O_Heli_Light_02_F"],
-		["B_Heli_Transport_01_F", "I_Heli_light_03_F"]
+	["rhs_ka60_grey", "RHS_Ka52_vvs"],
+	["rhs_ka60_c", "RHS_Ka52_vvsc"],
+	["RHS_Mi8mt_vdv", "RHS_Mi24P_vdv"],
+	["RHS_Mi8mt_vv", "RHS_Mi24V_vdv"],
+	["RHS_Mi8mt_vvs", "RHS_Mi24P_vvs"],
+	["RHS_Mi8mt_vvsc", "RHS_Mi24V_vvs"], 
+	["rhs_uh60m_mev", "RHS_Mi24P_vvsc"], 
+	["rhs_uh60m_mev_d", "RHS_Mi24V_vvsc"],
+	["rhs_ka60_grey", "RHS_Mi8AMT_vdv"],
+	["rhs_ka60_c", "RHS_Mi8AMT_vvs"],
+	["RHS_Mi8mt_vdv", "RHS_Mi8AMT_vvsc"],
+	["RHS_Mi8mt_vv", "RHS_Mi8AMTSh_vdv"],
+	["RHS_Mi8mt_vvs", "RHS_Mi8AMTSh_vvs"],
+	["RHS_Mi8mt_vvsc", "RHS_Mi8AMTSh_vvsc"],
+	["rhs_uh60m_mev", "rhs_ah64d_wd"],
+	["rhs_uh60m_mev_d", "rhs_ah64d"]
 	];
 
 	if (missionDifficultyHard) then
@@ -56,7 +70,7 @@ _setupObjects =
 
 		// add a driver/pilot/captain to the vehicle
 		// the little bird, orca, and hellcat do not require gunners and should not have any passengers
-		_soldier = [_aiGroup, _position] call createRandomSoldierC;
+		_soldier = [_aiGroup, _position, _loadout] call createRandomCrewman;
 		_soldier moveInDriver _vehicle;
 
 		switch (true) do
@@ -64,17 +78,17 @@ _setupObjects =
 			case (_type isKindOf "Heli_Transport_01_base_F"):
 			{
 				// these choppers have 2 turrets so we need 2 gunners
-				_soldier = [_aiGroup, _position] call createRandomSoldierC;
+				_soldier = [_aiGroup, _position, _loadout] call createRandomCrewman;
 				_soldier moveInTurret [_vehicle, [1]];
 
-				_soldier = [_aiGroup, _position] call createRandomSoldierC;
+				_soldier = [_aiGroup, _position, _loadout] call createRandomCrewman;
 				_soldier moveInTurret [_vehicle, [2]];
 			};
 
 			case (_type isKindOf "Heli_Attack_01_base_F" || _type isKindOf "Heli_Attack_02_base_F"):
 			{
 				// these choppers need 1 gunner
-				_soldier = [_aiGroup, _position] call createRandomSoldierC;
+				_soldier = [_aiGroup, _position, _loadout] call createRandomCrewman;
 				_soldier moveInGunner _vehicle;
 			};
 		};
@@ -148,17 +162,17 @@ _successExec =
 {
 	// Mission completed
 
-	_box1 = createVehicle ["Box_NATO_Wps_F", _lastPos, [], 5, "None"];
+	_box1 = createVehicle ["rhs_weapons_crate_ak_standard", _lastPos, [], 5, "None"];
 	_box1 setDir random 360;
-	[_box1, "mission_USSpecial"] call fn_refillbox;
+	[_box1, randomMissionCargo, 1] call randomCargoFill;
 
-	_box2 = createVehicle ["Box_East_Wps_F", _lastPos, [], 5, "None"];
+	_box2 = createVehicle ["rhs_weapons_crate_ak_ammo_545x39_standard", _lastPos, [], 5, "None"];
 	_box2 setDir random 360;
-	[_box2, "mission_USLaunchers"] call fn_refillbox;
+	[_box2, randomMissionExplosiveCargo, 1] call randomCargoFill;
 
-	_box3 = createVehicle ["Box_IND_WpsSpecial_F", _lastPos, [], 5, "None"];
+	_box3 = createVehicle ["rhs_weapons_crate_ak_standard", _lastPos, [], 5, "None"];
 	_box3 setDir random 360;
-	[_box3, "mission_Main_A3snipers"] call fn_refillbox;
+	[_box3, randomMissionCargo, 1] call randomCargoFill;
 
 	_successHintMessage = "The sky is clear again, the enemy patrol was taken out! Ammo crates have fallen near the wreck.";
 };

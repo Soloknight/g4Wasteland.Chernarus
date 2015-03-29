@@ -9,7 +9,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_vehicleClass", "_vehicle"];
+private ["_nbUnits", "_vehicleClass", "_vehicle", "_loadout"];
 
 _setupVars =
 {
@@ -40,10 +40,11 @@ _setupObjects =
 
 	// Class, Position, Fuel, Ammo, Damage, Special
 	_vehicle = [_vehicleClass, _missionPos] call createMissionVehicle;
-	_vehicle call fn_refilltruck;
+	[_vehicle, randomMissionCargo, 2] call randomCargoFill;
 
 	_aiGroup = createGroup CIVILIAN;
-	[_aiGroup, _missionPos, _nbUnits] call createCustomGroup;
+	_loadout = aiLoadoutsBasic call BIS_fnc_selectRandom;
+	[_aiGroup, _missionPos, _loadout, _nbUnits] call createRandomGroup;
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> _vehicleClass >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> _vehicleClass >> "displayName");

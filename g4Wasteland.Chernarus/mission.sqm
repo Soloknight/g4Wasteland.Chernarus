@@ -130,7 +130,7 @@ class Mission
 	class Intel
 	{
 		briefingName="G4G Wasteland Chernarus v.1.5.2";
-		overviewText="G4G Wasteland Chernarus by g4-gamers.com - Core developed by A3Wasteland.com";
+		overviewText="G4G Wasteland Stratis by g4-gamers.com";
 		resistanceWest=0;
 		timeOfChanges=3600;
 		startWeather=0.099999994;

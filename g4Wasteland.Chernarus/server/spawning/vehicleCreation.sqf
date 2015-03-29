@@ -74,6 +74,7 @@ if (!isNil "_respawnSettings") then
 
 //Set Vehicle Attributes
 _vehicle setFuel (0.2 + random 0.1);
+_vehicle setVariable ["R3F_LOG_disabled",false,true];
 
 // Reset armed Offroad to 1 mag
 if (_vehicleType isKindOf "Offroad_01_armed_base_F") then
@@ -92,4 +93,4 @@ if (_vehicleType isKindOf "Helicopter_Base_F") then
 
 if (_type > 1) then { _vehicle setVehicleAmmo (random 1.0) };
 
-[_vehicle] call randomWeapons;
+[_vehicle] call randomVehicleWeapons;

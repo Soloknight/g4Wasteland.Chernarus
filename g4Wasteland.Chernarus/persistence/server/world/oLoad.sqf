@@ -113,6 +113,8 @@ if (isNil "R3F_LOG_PUBVAR_point_attache") then {
 			{
 				case "side": { _value = _value call _strToSide };
 				case "R3F_Side": { _value = _value call _strToSide };
+				case "lockDown": { _value };
+				case "password": { _value };
 				case "ownerName":
 				{
 					switch (typeName _value) do

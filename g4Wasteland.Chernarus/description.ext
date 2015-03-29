@@ -23,7 +23,7 @@ class Header
 };
 author="G4-GAMERS.COM - Core by A3Wasteland.com";
 onLoadName = "G4G A3Wasteland"; // it would be great if you could keep "A3" in the name, like "ABC A3Wasteland" instead of "ABC Wasteland" :)
-onLoadMission = "Website: g4-gamers.com Teamspeak: ts.g4-gamers.com CORE MISSION: a3wasteland.com";
+onLoadMission = "Website: g4-gamers.com Teamspeak: ts.g4-gamers.com";
 overviewText = "Website: g4-gamers.com Teamspeak: ts.g4-gamers.com";
 overviewTextLocked = "Website: g4-gamers.com Teamspeak: ts.g4-gamers.com";
 overviewPicture = "mapConfig\Loading.jpg";
@@ -56,6 +56,9 @@ loadScreen = "mapConfig\Loading.jpg";
 #include "addons\proving_ground\PG_config.hpp"
 #include "addons\gui\gui.hpp"
 //NON VANILLA ADDONS
+#include "addons\BoS\dialog\BoS_mainMenu.hpp"
+#include "addons\AF_Keypad\AF_KP_defines.hpp"
+#include "addons\AF_Keypad\AF_KP_dialogs.hpp"
 #include "addons\outlw_magRepack\MagRepack_Config.hpp"
 #include "addons\cctv\ui.hpp"
 #include "addons\cctv\laptop_flat_menu.hpp"
@@ -141,15 +144,4 @@ class CfgSounds
 };
 
 
-
-class CfgMusic
-{
- tracks[]={};
- 
- class introSong
-        {
-        name = "introSong";
-        sound[] = {"\music\introSong.ogg", db+0, 1.0};
-        };
-};
  

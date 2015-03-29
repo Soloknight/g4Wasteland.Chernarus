@@ -9,13 +9,30 @@
 if (!isServer) exitwith {};
 #include "mainMissionDefines.sqf";
 
-private ["_convoyVeh", "_veh1", "_veh2", "_veh3", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_box1", "_box2"];
+private [
+	"_convoyVeh",
+	"_veh1",
+	"_veh2",
+	"_veh3",
+	"_createVehicle",
+	"_vehicles",
+	"_leader",
+	"_speedMode",
+	"_waypoint",
+	"_vehicleName",
+	"_numWaypoints",
+	"_box1",
+	"_box2",
+	"_loadout"
+];
 
 _setupVars =
 {
 	_missionType = "Armed Convoy";
 	_locationsArray = LandConvoyPaths;
 };
+
+_loadout = aiLoadoutsBasic call BIS_fnc_selectRandom;
 
 _setupObjects =
 {
@@ -49,18 +66,18 @@ _setupObjects =
 		_vehicle setDir _direction;
 		_aiGroup addVehicle _vehicle;
 
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
+		_soldier = [_aiGroup, _position, _loadout] call createRandomSoldier;
 		_soldier moveInDriver _vehicle;
 
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
+		_soldier = [_aiGroup, _position, _loadout] call createRandomSoldier;
 		_soldier moveInCargo [_vehicle, 0];
 
 		if !(_type isKindOf "Truck_F") then
 		{
-			_soldier = [_aiGroup, _position] call createRandomSoldier;
+			_soldier = [_aiGroup, _position, _loadout] call createRandomSoldier;
 			_soldier moveInGunner _vehicle;
 
-			_soldier = [_aiGroup, _position] call createRandomSoldier;
+			_soldier = [_aiGroup, _position, _loadout] call createRandomSoldier;
 
 			if (_vehicle emptyPositions "commander" > 0) then
 			{
@@ -129,13 +146,13 @@ _successExec =
 {
 	// Mission completed
 
-	_box1 = createVehicle ["Box_NATO_Wps_F", _lastPos, [], 2, "None"];
+	_box1 = createVehicle ["rhs_weapons_crate_ak_standard", _lastPos, [], 2, "None"];
 	_box1 setDir random 360;
-	[_box1, "mission_USSpecial"] call fn_refillbox;
+	[_box1, randomMissionCargo, 1] call randomCargoFill;
 
-	_box2 = createVehicle ["Box_East_WpsSpecial_F", _lastPos, [], 2, "None"];
+	_box2 = createVehicle ["rhs_weapons_crate_ak_ammo_545x39_standard", _lastPos, [], 2, "None"];
 	_box2 setDir random 360;
-	[_box2, "mission_USLaunchers"] call fn_refillbox;
+	[_box2, randomMissionExplosiveCargo, 1] call randomCargoFill;
 
 	_successHintMessage = "The convoy has been stopped, the weapon crates and vehicles are now yours to take.";
 };
